@@ -1,0 +1,1 @@
+{"name":"Local: InvCount2","url":"c:\\Users\\surya\\OneDrive\\ISM\\CP\\InvCount2.cpp","tests":[{"id":1743442765219,"input":"2\n\n3\n3\n1\n2\n\n5\n2\n3\n8\n6\n1\n","output":"2\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\surya\\OneDrive\\ISM\\CP\\InvCount2.cpp","group":"local","local":true}

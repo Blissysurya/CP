@@ -1,0 +1,1 @@
+{"name":"Local: ACOPE","url":"c:\\Users\\surya\\OneDrive\\ISM\\CP\\ACOPE.cpp","tests":[{"id":1747667022155,"input":"4\n1\n2\n10\n9999999","output":"0\n1\n2\n13175"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\surya\\OneDrive\\ISM\\CP\\ACOPE.cpp","group":"local","local":true}
