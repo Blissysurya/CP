@@ -65,12 +65,52 @@ int32_t main(){
             }
         }
 
+        int cost1=0;
+
         for(int i = n-1 ; i>=0 ; i--){
+
             if( no_of_zeroes == no_of_ones ){
                 break;
+            }else{
+                cost1++;
             }
 
-}
+            if(s[i]=='0'){
+                no_of_zeroes--;
+            }else{
+                no_of_ones--;
+            }
+
+            
+
+            }  
+            
+            
+            if(s[0]=='0'){
+                int st_zeroes=0;
+
+                for(int i=0;i<n;i++){
+                    if(s[i]=='0'){
+                        st_zeroes++;
+                    }else{
+                        break;
+                    }
+                }
+        
+            }else{
+                int st_ones=0;
+
+                for(int i=0;i<n;i++){
+                    if(s[i]=='1'){
+                        st_ones++;
+                    }else{
+                        break;
+                    }
+                }
+                
+            }
+
+
 
         }
 
