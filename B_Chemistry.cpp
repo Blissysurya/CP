@@ -51,37 +51,36 @@ int32_t main(){
     int t;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
+            int n,k;
+            cin>>n>>k;
 
-        vi vec(n);
-        cin>>vec;
+            string s;
+            cin>>s;
 
-        vector<int> pref(n+1,0);
+            map<char,int> mp;
 
-        for(int i=1;i<=n;i++){
 
-            pref[i] = pref[i-1]+vec[i-1];
-
-        }
-
-        int ans = 0;
-        
-        for(int i=1 ; i < n ;i++){
-            int l_max = -1e18;
-            int l_min = 1e18;
-            if(n%i == 0){
-                for(int j=i ; j<=n ; j+=i ){
-                    l_max = max(l_max, pref[j]-pref[j-i]);
-                    l_min = min(l_min, pref[j]-pref[j-i]);
-                }
-
-                ans = max(ans,l_max-l_min);
+            for(int i=0;i<n;i++){
+                mp[s[i]]++;
             }
-           
-        }
 
-        cout << ans <<endl;
+
+            int extra_odds=0;
+
+            for(auto &it: mp){
+                if(it.second%2!=0){
+                    extra_odds++;
+                }
+            }
+
+            if(extra_odds - 1 > k){
+                cout<<"NO"<<endl;
+              
+            }else{
+
+                cout<<"YES"<<endl;
+            }
+
 
         }
     }
