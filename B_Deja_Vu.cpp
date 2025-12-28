@@ -51,27 +51,40 @@ int32_t main(){
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
+            int n,q;
+            cin>>n>>q;
 
-        vi vec(n);
-        cin>>vec;
+            vi a(n);
+            cin>>a;
 
-        sort(whole(vec));
+            vi x(q);
+            cin>>x;
 
-        vector<int> pref(n+1,0);
+            set<int> s;
 
-        for(int i=1;i<=n;i++){
-            pref[i] = pref[i-1] + vec[i-1];
-        }
+            for(int i=0;i<q;i++){
+                int bit = x[i];
 
-        int ans=INT_MIN;
+                if(s.find(bit)==s.end()){
 
-        for(int i=0;i<=k;i++){
-            ans = max(ans , pref[n-(k-i)] - pref[2*i]);
-        }
+                    s.insert(bit);
+                    int val = (1<<bit);
 
-        cout<<ans<<endl;
+                    for( int j=0; j<n; j++){
+                        if(a[j]%val == 0){
+                            a[j] += (1<<(bit-1));
+                        }
+                    }
+
+                }
+
+            }
+
+            for(int i=0 ; i<n ; i++){
+                cout << a[i] <<" ";
+            }
+
+            cout<<endl;
 
         }
     }
