@@ -51,39 +51,17 @@ int32_t main(){
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
+        int n;
+        cin>>n;
 
-        vector<pair<int,int>> vec;
+        vi vec(n);
+        cin>>vec;
 
-        for(int i = 0 ; i < n ; i++){
-            int x;
-            cin>>x;
-            
-            vec.push_back({x,i});
+        sort(whole(vec));
+        reverse(whole(vec));
 
-        }
-
-        
-        for(int i=0;i<n;i++){
-
-            if(vec[i].first%k == 0){
-                vec[i].first=k;
-                continue;
-            }
-            vec[i].first = vec[i].first % k ;
-        }
-
-        sort(vec.begin(),vec.end(),[&](pair<int,int>& lhs, pair<int,int>& rhs){
-            if(lhs.first == rhs.first){
-                return lhs.second < rhs.second;
-            }else{
-                return lhs.first > rhs.first;
-            }
-        });
-        
-        for(auto& it: vec){
-            cout << it.second+1 << " ";
+        for(int i=0 ; i<n ; i++){
+            cout<<vec[i]<<" ";
         }
 
         cout<<endl;

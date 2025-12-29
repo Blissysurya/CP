@@ -51,42 +51,64 @@ int32_t main(){
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
+        int a,b;
+        cin>>a>>b;
 
-        vector<pair<int,int>> vec;
-
-        for(int i = 0 ; i < n ; i++){
-            int x;
-            cin>>x;
+        if(a<b){
             
-            vec.push_back({x,i});
+           
 
-        }
-
-        
-        for(int i=0;i<n;i++){
-
-            if(vec[i].first%k == 0){
-                vec[i].first=k;
+            if(b%2!=0){
+                cout<<-1<<endl;
                 continue;
             }
-            vec[i].first = vec[i].first % k ;
-        }
 
-        sort(vec.begin(),vec.end(),[&](pair<int,int>& lhs, pair<int,int>& rhs){
-            if(lhs.first == rhs.first){
-                return lhs.second < rhs.second;
-            }else{
-                return lhs.first > rhs.first;
+            int ratio = (b)/a;
+
+            if(ratio%2!=0){
+                cout<<-1<<endl;
+                continue;
             }
-        });
-        
-        for(auto& it: vec){
-            cout << it.second+1 << " ";
+
+            int count = 0;
+            while(b > a){
+                count++;
+                b>>=1;
+            }
+
+            int val = count/3 + (count%3)/2 + ((count%3)%2) ;
+            cout<<val<<endl;
+        }
+        else
+        {   
+            if(b==a){
+                cout<<0<<endl;
+                continue;
+            }
+
+           
+             if(a%b != 0){
+                cout<<-1<<endl;
+                continue;
+            }
+            int ratio = (a)/b;
+
+            if(ratio%2!=0){
+                cout<<-1<<endl;
+                continue;
+            }
+
+            int count = 0;
+            while(a > b){
+                count++;
+                a>>=1;
+            }
+
+             int val = count/3 + (count%3)/2 + ((count%3)%2) ;
+             cout<<val<<endl;
         }
 
-        cout<<endl;
+
 
         }
     }
