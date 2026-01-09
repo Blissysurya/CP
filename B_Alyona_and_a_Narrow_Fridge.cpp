@@ -46,67 +46,48 @@ long long binpow(long long a, long long b) {
     return res;
 }
 
-bool pred(int W, int mid, vector<int>& vec, map<int,int,greater<int>> mp){
-    int n = vec.size();
-    int h=0;
-    int rem = W;
-
-    while(!mp.empty()){
-        rem=W;
-        h++;
-    for(auto it=mp.begin() ; it!=mp.end() ;){
-        if(it->first <= rem){
-            it->second--;
-            rem -= it->first;
-            if(it->second == 0){
-                it=mp.erase(it);
-            }
-        }else{
-            it++;
-        }
+bool pred(int k,int h, vector<int>& vec){
+    vector<int> a;
+    for(int i=0;i<k;i++){
+        a.push_back(vec[i]);
     }
-   
 
+   sort(whole(a));
+   reverse(whole(a));
+    int rem=h;
+    int i;
+   for( i=0;i<k;i+=2){
+        rem-=a[i];
    }
 
-   if(h<=mid){
-    return true;
-   }else{
-    return false;
-   }
+   return rem>=0;
+
 
 }
 
 int32_t main(){
-    int t;
-    cin>>t;
-    while(t--){
-            int n,W;
-            cin>>n>>W;
+    int n,h;
+    cin>>n>>h;
 
-            vi vec(n);
-            cin>>vec;
+    vi vec(n);
+    cin>>vec;
 
-            map<int,int, greater<int>> mp;
+    int low=0;
+    int high = n;
+    int ans;
 
-            for(int i=0 ; i<n ;i++){
-                mp[vec[i]]++;
-            }
+    while(low<=high){
+        int mid = low + (high-low)/2;
 
-            int low=1;
-            int high=n;
-            int ans;
-
-            while(low <= high){
-                int mid = low + (high - low)/2;
-                if(pred(W,mid,vec,mp)){
-                    ans=mid;
-                    high=mid-1;
-                }else{
-                    low=mid+1;
-                }
-            }
-
-            cout<<ans<<endl;
+        if(pred(mid,h,vec)){
+            ans=mid;
+            low=mid+1;
+        }else{
+            high=mid-1;
         }
+
+        
+    }
+
+    cout<<ans<<endl;
     }

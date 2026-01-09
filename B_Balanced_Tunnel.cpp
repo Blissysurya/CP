@@ -47,116 +47,43 @@ long long binpow(long long a, long long b) {
 }
 
 
-vector<int> least_prime(MAXV, 0);
-void leastPrimeFactor(int n)
-{
-    least_prime[1] = 1;
-    for (int i = 2; i <= n; i++)
-    {
-       
-        if (least_prime[i] == 0)
-        {
-           
-            least_prime[i] = i;
- 
-            for (int j = i*i; j <= n; j += i)
-                if (least_prime[j] == 0)
-                   least_prime[j] = i;
-        }
-    }
-}
- vector<bool> prime(MAXV, true);
-void Sieve(int n)
-{
-  for (int p = 2; p * p <= n; p++) {
-
-        if (prime[p] == true) {
-            for (int i = p * p; i <= n; i += p)
-                prime[i] = false;
-        }
-    }
-}
-
-bool isPowerOfTwo(int n) {
-    return n > 0 && (n & (n - 1)) == 0;
-}
-
-int countSetBits(int n) {
-    int count = 0;
-    while (n) {
-        count += n & 1;
-        n >>= 1;
-    }
-    return count;
-}
-
-int mostSignificantBit(int n) {
-    int msb = 0;
-    while (n >>= 1) {
-        msb++;
-    }
-    return 1 << msb;
-}
-
-int leastSignificantBit(int n) {
-    return n & -n;
-}
-
-bool isIthBitSet(int n, int i) {
-    return (n & (1 << i)) != 0;
-}
-
-int ternary_search(int lo, int hi) {
-    while (hi - lo >= 3)
-    {
-        int mid1 = lo + (hi - lo) / 3;
-        int mid2 = hi - (hi - lo) / 3;
-        // int f1 = f(mid1);
-        // int f2 = f(mid2);
-        // if (f1 > f2)
-        // {
-        //     hi = mid2;
-        // }
-        // else if (f1 < f2)
-        // {
-        //     lo = mid1;
-        // }
-        // else
-        // {
-        //     // Note: this case doesn’t need to be explicitly handled
-        //     lo = mid1;
-        //     hi = mid2;
-        // }
-    }
-    int ans = INT_MIN;
-    
-    // for (int i = lo; i <= hi; i++) ans = max(ans, f(i));
-   
-    return ans;
-}
-
-
 int32_t main(){
-   int n;
-   cin>>n;
+    
+        int n;
+        cin>>n;
 
-   vi vec1(n);
-   vi vec2(n);
-    cin>>vec1;
-    cin>>vec2;
-    vector<int> elidx(2e5,0);
+        vi a(n);
+        cin>>a;
 
-    for(int i=0;i<n;i++){
-        elidx[vec1[i]]=i;
-    }
-    int ans=0;
-    for(int i=0;i<n;i++){
-        if(i < elidx[vec2[i]]){
-            // cout<<vec2[i]<<endl;
-            ans+=elidx[vec2[i]]-i;
+        vi b(n);
+        cin>>b;
+
+        map<int,int> pos_a;
+        map<int,int> pos_b;
+
+
+
+        for(int i=0;i<n;i++){
+            pos_a[a[i]]=i;
         }
-    }
 
-    cout<< ans<<endl;
+        for(int i=0;i<n;i++){
+            pos_b[b[i]]=i;
+        }
 
+        int k=0;
+
+        for(int i=0;i<n;i++){
+            if(pos_a[a[i]] < pos_b[a[i]]){
+                k++;
+            }
+        }
+
+        if(k == 0){
+            cout<<0<<endl;
+        }else{
+            cout<<n-k<<endl;
+        }
+
+        
     }
